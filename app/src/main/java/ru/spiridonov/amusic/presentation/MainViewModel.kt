@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.spiridonov.amusic.domain.usecases.networkDataFetch.FetchDataFromNetworkUseCase
+import ru.spiridonov.amusic.domain.usecases.networkDataFetch.FetchChartDataFromNetworkUseCase
 import javax.inject.Inject
 
 
 class MainViewModel @Inject constructor(
     //private val application: Application,
-    private val fetchDataFromNetworkUseCase: FetchDataFromNetworkUseCase
+    private val fetchChartDataFromNetworkUseCase: FetchChartDataFromNetworkUseCase
 ) : ViewModel() {
 
     private val _mainActivityState = MutableLiveData<MainActivityState>()
@@ -34,7 +34,7 @@ class MainViewModel @Inject constructor(
 
     private fun fetchChartData() {
         viewModelScope.launch(Dispatchers.IO) {
-            fetchDataFromNetworkUseCase.invoke()
+            fetchChartDataFromNetworkUseCase.invoke()
         }
     }
 }

@@ -1,5 +1,6 @@
 package ru.spiridonov.amusic.data.database.albumDB
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,5 +13,5 @@ interface AlbumDao {
     suspend fun addAlbum(albumDbModel: AlbumDbModel)
 
     @Query("SELECT * FROM albums")
-    suspend fun getAllAlbums(): List<AlbumDbModel>
+    fun getAllAlbums(): LiveData<List<AlbumDbModel>>
 }

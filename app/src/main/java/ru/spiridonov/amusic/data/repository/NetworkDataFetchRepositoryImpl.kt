@@ -2,6 +2,8 @@ package ru.spiridonov.amusic.data.repository
 
 import ru.spiridonov.amusic.data.database.albumDB.AlbumDao
 import ru.spiridonov.amusic.data.database.artistDB.ArtistDao
+import ru.spiridonov.amusic.data.database.chartDB.ChartDao
+import ru.spiridonov.amusic.data.database.chartDB.ChartDbModel
 import ru.spiridonov.amusic.data.database.playlistDB.PlaylistDao
 import ru.spiridonov.amusic.data.database.podcastDB.PodcastDao
 import ru.spiridonov.amusic.data.database.trackDB.TrackDao
@@ -17,13 +19,16 @@ class NetworkDataFetchRepositoryImpl @Inject constructor(
     private val artistDao: ArtistDao,
     private val playlistDao: PlaylistDao,
     private val podcastDao: PodcastDao,
-    private val trackDao: TrackDao
+    private val trackDao: TrackDao,
+    private val chartDao: ChartDao
 ) : NetworkDataFetchRepository {
 
-    override suspend fun fetchDataFromNetwork() {
+    override suspend fun fetchChartDataFromNetwork() {
         apiService.getChart().body().let { body ->
+            chartDao.deleteAll()
             body?.albums?.data?.forEach {
                 albumDao.addAlbum(dtoMapper.mapAlbumDtoToAlbumDbModel(it))
+                chartDao.addCharts(ChartDbModel(chartTrackId = null, chartAlbumId = it.id))
             }
             body?.artists?.data?.forEach {
                 artistDao.addArtist(dtoMapper.mapArtistDtoToArtistDbModel(it))
@@ -36,6 +41,7 @@ class NetworkDataFetchRepositoryImpl @Inject constructor(
             }
             body?.tracks?.data?.forEach {
                 trackDao.addTrack(dtoMapper.mapTrackDtoToTrackDbModel(it))
+                chartDao.addCharts(ChartDbModel(chartTrackId = it.id, chartAlbumId = null))
             }
         }
     }

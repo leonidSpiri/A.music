@@ -4,7 +4,13 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.spiridonov.amusic.AMusicApp
+import ru.spiridonov.amusic.R
 import ru.spiridonov.amusic.databinding.ActivityMainBinding
 import javax.inject.Inject
 
@@ -40,9 +46,23 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 is MainActivityState.SetupView -> {
-
+                    createScreen()
                 }
             }
         }
+    }
+
+    private fun createScreen() {
+        val navView: BottomNavigationView = binding.navView
+
+        val navController = findNavController(R.id.nav_host_fragment)
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_library, R.id.navigation_search
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 }
