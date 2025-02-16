@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        viewModel.initialCheck()
         observeViewModel()
     }
 
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.mainActivityState.observe(this) { state ->
             when (state) {
                 is MainActivityState.NeedToReLogin -> {
-
+                    //TODO(go to login screen)
                 }
 
                 is MainActivityState.SetupView -> {
