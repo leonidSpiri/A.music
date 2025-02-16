@@ -13,7 +13,7 @@ data class TrackItem(
     val preview: String,
     val md5Image: String,
     val position: Int,
-    val artist: ArtistItem,
-    val album: AlbumItem,
+    val artist: ArtistItem?,
+    val album: AlbumItem?,
     val type: String
 )

@@ -1,4 +1,4 @@
-package ru.spiridonov.amusic.domain.repository.networkDataFetch
+package ru.spiridonov.amusic.domain.repository
 
 interface NetworkDataFetchRepository {
     suspend fun fetchDataFromNetwork()

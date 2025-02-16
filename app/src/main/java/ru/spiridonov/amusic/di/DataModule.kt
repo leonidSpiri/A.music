@@ -17,7 +17,7 @@ import ru.spiridonov.amusic.data.database.trackDB.TrackDao
 import ru.spiridonov.amusic.data.network.ApiFactory
 import ru.spiridonov.amusic.data.network.ApiService
 import ru.spiridonov.amusic.data.repository.NetworkDataFetchRepositoryImpl
-import ru.spiridonov.amusic.domain.repository.networkDataFetch.NetworkDataFetchRepository
+import ru.spiridonov.amusic.domain.repository.NetworkDataFetchRepository
 
 @Module
 interface DataModule {
