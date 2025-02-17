@@ -15,17 +15,19 @@ class TrackRepositoryImpl @Inject constructor(
     private val trackMapper: TrackMapper
 ) : TrackRepository {
 
-    override suspend fun getTrackList() =
+    override fun getTrackList() =
         trackDao.getAllTrack().map { trackList ->
             trackList.map { trackMapper.mapTrackDbModelToTrackItem(it) }
         }
 
-    override suspend fun getChartTrackList(): LiveData<List<TrackItem>>? {
+    override suspend fun getChartTrackList(): LiveData<List<TrackItem>> {
         chartDao.getAllChartTracksId().map { chartTrackList ->
             return trackDao.getTrackById(chartTrackList).map { trackList ->
                 trackList.map { trackMapper.mapTrackDbModelToTrackItem(it) }
             }
         }
-        return null
+        return trackDao.getAllTrack().map { trackList ->
+            trackList.map { trackMapper.mapTrackDbModelToTrackItem(it) }
+        }
     }
 }

@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetTrackListUseCase @Inject constructor(
     private val repository: TrackRepository
 ) {
-    suspend operator fun invoke() = repository.getTrackList()
+    operator fun invoke() = repository.getTrackList()
 }

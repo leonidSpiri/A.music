@@ -12,7 +12,7 @@ interface ChartDao {
     suspend fun addCharts(chartDbModel: ChartDbModel)
 
     @Query("SELECT chartTrackId FROM chart WHERE chartTrackId is not null")
-    fun getAllChartTracksId(): List<Long>
+    suspend fun getAllChartTracksId(): List<Long>
 
     @Query("DELETE FROM chart")
     suspend fun deleteAll()

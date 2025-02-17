@@ -54,7 +54,7 @@
             android:id="@+id/track_artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{TrackItem.position}"
+            android:text="@{String.valueOf(TrackItem.position)}"
             tools:text="Artist Name"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
@@ -64,7 +64,7 @@
         android:id="@+id/track_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{TrackItem.duration}"
+        android:text="@{String.valueOf(TrackItem.duration)}"
         tools:text="3:45"
         android:textColor="@android:color/black"
         android:textSize="14sp"

@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.spiridonov.amusic.AMusicApp
 import ru.spiridonov.amusic.databinding.FragmentHomeBinding
 import ru.spiridonov.amusic.presentation.ViewModelFactory
+import ru.spiridonov.amusic.presentation.adapters.TrackAdapter
 import javax.inject.Inject
 
-class HomeFragment: Fragment() {
+class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding
@@ -20,6 +24,10 @@ class HomeFragment: Fragment() {
 
     private val component by lazy {
         (requireActivity().application as AMusicApp).component
+    }
+
+    private val trackAdapter by lazy {
+        TrackAdapter()
     }
 
     @Inject
@@ -43,6 +51,13 @@ class HomeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
+        binding.rvTracks.adapter = trackAdapter
+        lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.getChartTrackList().observe(viewLifecycleOwner) {
+                trackAdapter.submitList(it)
+            }
+        }
+
     }
 
     override fun onDestroyView() {
