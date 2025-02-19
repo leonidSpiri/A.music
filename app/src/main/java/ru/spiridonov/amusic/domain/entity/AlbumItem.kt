@@ -10,5 +10,6 @@ data class AlbumItem(
     val coverXl: String,
     val md5Image: String,
     val trackList: String,
-    val type: String
+    val type: String,
+    val isInChart: Boolean = false
 )

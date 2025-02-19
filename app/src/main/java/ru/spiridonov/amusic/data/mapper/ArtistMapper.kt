@@ -18,6 +18,7 @@ class ArtistMapper @Inject constructor() {
             pictureXl = artistDbModel.pictureXl,
             radio = artistDbModel.radio,
             trackList = artistDbModel.trackList,
-            type = artistDbModel.type
+            type = artistDbModel.type,
+            isInChart = artistDbModel.isInChart
         )
 }

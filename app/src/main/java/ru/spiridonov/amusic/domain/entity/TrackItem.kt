@@ -15,5 +15,6 @@ data class TrackItem(
     val position: Int,
     val artist: ArtistItem?,
     val album: AlbumItem?,
-    val type: String
+    val type: String,
+    val isInChart: Boolean = false
 )

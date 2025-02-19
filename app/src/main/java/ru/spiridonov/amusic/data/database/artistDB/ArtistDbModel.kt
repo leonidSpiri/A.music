@@ -15,5 +15,6 @@ data class ArtistDbModel(
     val pictureXl: String,
     val radio: Boolean,
     val trackList: String,
-    val type: String
+    val type: String,
+    val isInChart: Boolean = false
 )

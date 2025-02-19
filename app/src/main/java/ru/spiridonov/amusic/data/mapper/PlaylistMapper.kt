@@ -23,6 +23,7 @@ class PlaylistMapper @Inject constructor() {
             creationDate = playlistDbModel.creationDate,
             md5Image = playlistDbModel.md5Image,
             pictureType = playlistDbModel.pictureType,
-            type = playlistDbModel.type
+            type = playlistDbModel.type,
+            isInChart = playlistDbModel.isInChart,
         )
 }

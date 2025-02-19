@@ -21,5 +21,6 @@ data class TrackDbModel(
     val position: Int,
     val artistId: Long,
     val albumId: Long,
-    val type: String
+    val type: String,
+    val isInChart: Boolean = false
 )

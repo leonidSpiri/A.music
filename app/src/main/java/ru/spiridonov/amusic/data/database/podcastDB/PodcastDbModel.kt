@@ -17,5 +17,6 @@ data class PodcastDbModel(
     val pictureMedium: String,
     val pictureBig: String,
     val pictureXl: String,
-    val type: String
+    val type: String,
+    val isInChart: Boolean = false
 )

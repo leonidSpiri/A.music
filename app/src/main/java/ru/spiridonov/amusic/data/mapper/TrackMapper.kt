@@ -22,6 +22,7 @@ class TrackMapper@Inject constructor() {
             position = trackDbModel.position,
             artist = null, //TODO(get artist from db by id)
             album = null,  //TODO(get album from db by id)
-            type = trackDbModel.type
+            type = trackDbModel.type,
+            isInChart = trackDbModel.isInChart,
         )
 }

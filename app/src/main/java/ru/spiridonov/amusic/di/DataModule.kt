@@ -8,8 +8,6 @@ import ru.spiridonov.amusic.data.database.albumDB.AlbumAppDatabase
 import ru.spiridonov.amusic.data.database.albumDB.AlbumDao
 import ru.spiridonov.amusic.data.database.artistDB.ArtistAppDatabase
 import ru.spiridonov.amusic.data.database.artistDB.ArtistDao
-import ru.spiridonov.amusic.data.database.chartDB.ChartAppDatabase
-import ru.spiridonov.amusic.data.database.chartDB.ChartDao
 import ru.spiridonov.amusic.data.database.playlistDB.PlaylistAppDatabase
 import ru.spiridonov.amusic.data.database.playlistDB.PlaylistDao
 import ru.spiridonov.amusic.data.database.podcastDB.PodcastAppDatabase
@@ -102,14 +100,6 @@ interface DataModule {
             application: Application
         ): TrackDao {
             return TrackAppDatabase.getInstance(application).trackDao()
-        }
-
-        @Provides
-        @ApplicationScope
-        fun provideChartDao(
-            application: Application
-        ): ChartDao {
-            return ChartAppDatabase.getInstance(application).chartDao()
         }
     }
 }

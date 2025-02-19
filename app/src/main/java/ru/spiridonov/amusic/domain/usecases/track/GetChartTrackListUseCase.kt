@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetChartTrackListUseCase @Inject constructor(
     private val repository: TrackRepository
 ) {
-    suspend operator fun invoke() = repository.getChartTrackList()
+    operator fun invoke() = repository.getChartTrackList()
 }

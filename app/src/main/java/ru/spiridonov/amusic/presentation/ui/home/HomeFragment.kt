@@ -7,9 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import ru.spiridonov.amusic.AMusicApp
 import ru.spiridonov.amusic.databinding.FragmentHomeBinding
 import ru.spiridonov.amusic.presentation.ViewModelFactory
@@ -52,12 +49,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
         binding.rvTracks.adapter = trackAdapter
-        lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.getChartTrackList().observe(viewLifecycleOwner) {
-                trackAdapter.submitList(it)
-            }
-        }
+        observeViewModel()
+    }
 
+    private fun observeViewModel() {
+        viewModel.getChartTrackList().observe(viewLifecycleOwner) {
+            trackAdapter.submitList(it)
+        }
     }
 
     override fun onDestroyView() {

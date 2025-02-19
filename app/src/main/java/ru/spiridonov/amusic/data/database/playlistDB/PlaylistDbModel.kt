@@ -20,5 +20,6 @@ data class PlaylistDbModel(
     val creationDate: String,
     val md5Image: String,
     val pictureType: String,
-    val type: String
+    val type: String,
+    val isInChart: Boolean = false
 )

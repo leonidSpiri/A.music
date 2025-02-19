@@ -20,5 +20,6 @@ class PodcastMapper @Inject constructor() {
             pictureBig = podcastDbModel.pictureBig,
             pictureXl = podcastDbModel.pictureXl,
             type = podcastDbModel.type,
+            isInChart = podcastDbModel.isInChart,
         )
 }

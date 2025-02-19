@@ -16,6 +16,7 @@ class AlbumMapper @Inject constructor() {
             coverXl = albumDbModel.coverXl,
             md5Image = albumDbModel.md5Image,
             trackList = albumDbModel.trackList,
-            type = albumDbModel.type
+            type = albumDbModel.type,
+            isInChart = albumDbModel.isInChart
         )
 }

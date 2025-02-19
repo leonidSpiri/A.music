@@ -11,6 +11,6 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    suspend fun getChartTrackList() = getTrackListUseCase.invoke()
+    fun getChartTrackList() = getChartTrackListUseCase.invoke()
 
 }
